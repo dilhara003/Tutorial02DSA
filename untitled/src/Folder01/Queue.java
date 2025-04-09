@@ -7,45 +7,43 @@ public class Queue {
     private int maxSize;
     private int count;
 
-    Queue(int size){
+    public Queue(int size){
         queue = new String[size];
-        maxSize=size;
-        front=0;
-        rear=-1;
-        count=0;
+        maxSize = size;
+        front = 0;
+        rear = -1;
+        count = 0;
     }
 
     public boolean isQueueEmpty(){
-        return (count==0);
+        return (count == 0);
     }
 
     public boolean isQueueFull(){
-        return (count==maxSize);
+        return (count == maxSize);
     }
 
     public void append(String item){
         if(isQueueFull()){
             System.out.println("\nQueue is Full\n");
-        }
-        else{
-            System.out.println("Inserting "+ item);
-            queue[++rear]= item;
+        } else {
+            queue[++rear] = item;
             count++;
         }
     }
 
-    public int serve(){
+    public String serve(){
         if(isQueueEmpty()){
-            System.out.println("Queue is Empty ");
-            return 0;
-        }else{
-            int x = Integer.parseInt(queue[front++]);
+            System.out.println("Queue is Empty");
+            return null;
+        } else {
+            String x = queue[front++];
             count--;
             return x;
         }
     }
 
-    public int QueueSize(){
+    public int queueSize(){
         return count;
     }
 }
